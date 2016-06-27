@@ -1,0 +1,268 @@
+$("#welcome").html("")
+$("#results").html("You have named " + "<%= @sumname %>")
+$("#again").html("<i>Who shall we seek next?</i>")
+$("#profileicon").attr("src", '<%= @square %>')
+
+blue = "<%= @blue.to_json %>"
+if (blue != null) {
+$('#bluesum').html('')
+$('#blueteam100').html('')
+$('#blueresults').html('')
+$('#bluechamp').html('')
+$('#bluecount1').html('')
+$('#bluecount2').html('')
+$('#bluecount3').html('')
+bluenoquo = blue.replace(/&quot;/g, '')
+bluesplit = bluenoquo.split(',')
+bluewins = '<%= @bbigwr.to_json %>'
+bwrnoquo = bluewins.replace(/&quot;/g, '')
+bwrsplit = bwrnoquo.split(',')
+bluepic = '<%= @bluepic.to_json %>'
+bpicnoquo = bluepic.replace(/&quot;/g, '')
+bpicsplit = bpicnoquo.split(',')
+bluekey = '<%= @bluechampkey.to_json %>'
+bkeynoquo = bluekey.replace(/&quot;/g, '')
+bkeysplit = bkeynoquo.split(',')
+bluename = '<%= @bluechampname.to_json %>'
+bnamenoquo = bluename.replace(/&quot;/g, '')
+bnamesplit = bnamenoquo.split(',')
+bluetitle = '<%= @bluechamptitle.to_json %>'
+btitlenoquo = bluetitle.replace(/&quot;/g, '')
+btitlesplit = btitlenoquo.split(',')
+blueone = '<%= @blueone %>'
+blueleftone = blueone.replace('[', '')
+bluerightone = blueleftone.replace(']', '')
+bonesplit = bluerightone.split(',')
+bonefilter = bonesplit.filter(v=>v!='')
+bluetwo = '<%= @bluetwo %>'
+bluelefttwo = bluetwo.replace('[', '')
+bluerighttwo = bluelefttwo.replace(']', '')
+btwosplit = bluerighttwo.split(',')
+btwofilter = btwosplit.filter(v=>v!='')
+bluethree = '<%= @bluethree %>'
+blueleftthree = bluethree.replace('[', '')
+bluerightthree = blueleftthree.replace(']', '')
+bthreesplit = bluerightthree.split(',')
+bthreefilter = bthreesplit.filter(v=>v!='')
+bluefour = '<%= @bluefour %>'
+blueleftfour = bluefour.replace('[', '')
+bluerightfour = blueleftfour.replace(']', '')
+bfoursplit = bluerightfour.split(',')
+bfourfilter = bfoursplit.filter(v=>v!='')
+bluefive = '<%= @bluefive %>'
+blueleftfive = bluefive.replace('[', '')
+bluerightfive = blueleftfive.replace(']', '')
+bfivesplit = bluerightfive.split(',')
+bfivefilter = bfivesplit.filter(v=>v!='')
+
+$("#blueteam100").append("<center>Blue Team</center>")
+$("#bluesum").append("<p id='spacing'><b>" + bluesplit[0].replace('[', '') + "</b></p><p>Win rate: " + bwrsplit[0].replace('[', '') * 10 + "%</p><img height='120' width='120' src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/" + bpicsplit[0].replace('[', '') + ".png'>");
+for (i = 1; i < bluesplit.length-1; i++) {
+  $("#bluesum").append("<p id='spacing'><b>" + bluesplit[i] + "</b></p><p>Win rate: " + bwrsplit[i] * 10  + "%</p><img height='120' width='120' src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/" + bpicsplit[i] + ".png'>");
+}
+$("#bluesum").append("<p id='spacing'><b>" + bluesplit[bluesplit.length-1].replace(']', '') + "</b></p><p>Win rate: " + bwrsplit[bwrsplit.length-1].replace(']', '') * 10 + "%</p><img height='120' width='120' src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/" + bpicsplit[bpicsplit.length-1].replace(']', '') + ".png'>");
+
+$("#bluechamp").append("<p id='spacing'><b>" + bnamesplit[0].replace('[', '') + "</b>, " + btitlesplit[0].replace('[', '') + "</p>Counters: " + bonefilter.length * 20 + "%<p><img src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + bkeysplit[0].replace('[', '') + ".png'></p>");
+for (i = 1; i < bnamesplit.length-1; i++) {
+  $("#bluechamp").append("<p id='spacing'><b>" + bnamesplit[i] + "</b>, " + btitlesplit[i] + "</p><p id='bluecount" + i + "'></p><p><img src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + bkeysplit[i] + ".png'></p>");
+}
+$("#bluechamp").append("<p id='spacing'><b>" + bnamesplit[bnamesplit.length-1].replace(']', '') + "</b>, " + btitlesplit[btitlesplit.length-1].replace(']', '') + "</p>Counters: " + bfivefilter.length * 20 + "%<p><img src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + bkeysplit[bkeysplit.length-1].replace(']', '') + ".png'></p>");
+$('#bluecount1').append("Counters: " + btwofilter.length * 20 + "%");
+$('#bluecount2').append("Counters: " + bthreefilter.length * 20 + "%");
+$('#bluecount3').append("Counters: " + bfourfilter.length * 20 + "%");
+
+bsumone = bwrsplit[0].replace('[', '') * 10
+bchampone = bonefilter.length * 20
+bsumarray = []
+for (i = 1; i < bluesplit.length-1; i++) {
+	bsum = bwrsplit[i] * 10
+	bsumarray.push(bsum)
+}
+bsumtwo = bsumarray[0]
+bchamptwo = btwofilter.length * 20
+bsumthree = bsumarray[1]
+bchampthree = bthreefilter.length * 20
+bsumfour = bsumarray[2]
+bchampfour = bfourfilter.length * 20
+bsumfive = bwrsplit[bwrsplit.length-1].replace(']', '') * 10
+bchampfive = bfivefilter.length * 20
+
+bone = (bsumone + bchampone) / 2
+btwo = (bsumtwo + bchamptwo) / 2
+bthree = (bsumthree + bchampthree) / 2
+bfour = (bsumfour + bchampfour) / 2
+bfive = (bsumfive + bchampfive) / 2
+
+blueavg = (bone + btwo + bthree + bfour + bfive) / 5
+
+}
+
+purple = "<%= @purple.to_json %>"
+if (purple != null) {
+$('#purplesum').html('')
+$('#purpleresults').html('')
+$('#purplechamp').html('')
+$('#purplecount1').html('')
+$('#purplecount2').html('')
+$('#purplecount3').html('')
+purpnoquo = purple.replace(/&quot;/g, '')
+purpsplit = purpnoquo.split(',')
+purplewins = '<%= @pbigwr.to_json %>'
+pwrnoquo = purplewins.replace(/&quot;/g, '')
+pwrsplit = pwrnoquo.split(',')
+purplepic = '<%= @purplepic.to_json %>'
+ppicnoquo = purplepic.replace(/&quot;/g, '')
+ppicsplit = ppicnoquo.split(',')
+purplekey = '<%= @purplechampkey.to_json %>'
+pkeynoquo = purplekey.replace(/&quot;/g, '')
+pkeysplit = pkeynoquo.split(',')
+purplename = '<%= @purplechampname.to_json %>'
+pnamenoquo = purplename.replace(/&quot;/g, '')
+pnamesplit = pnamenoquo.split(',')
+purpletitle = '<%= @purplechamptitle.to_json %>'
+ptitlenoquo = purpletitle.replace(/&quot;/g, '')
+ptitlesplit = ptitlenoquo.split(',')
+purpleone = '<%= @purpleone %>'
+purpleleftone = purpleone.replace('[', '')
+purplerightone = purpleleftone.replace(']', '')
+ponesplit = purplerightone.split(',')
+ponefilter = ponesplit.filter(v=>v!='')
+purpletwo = '<%= @purpletwo %>'
+purplelefttwo = purpletwo.replace('[', '')
+purplerighttwo = purplelefttwo.replace(']', '')
+ptwosplit = purplerighttwo.split(',')
+ptwofilter = ptwosplit.filter(v=>v!='')
+purplethree = '<%= @purplethree %>'
+purpleleftthree = purplethree.replace('[', '')
+purplerightthree = purpleleftthree.replace(']', '')
+pthreesplit = purplerightthree.split(',')
+pthreefilter = pthreesplit.filter(v=>v!='')
+purplefour = '<%= @purplefour %>'
+purpleleftfour = purplefour.replace('[', '')
+purplerightfour = purpleleftfour.replace(']', '')
+pfoursplit = purplerightfour.split(',')
+pfourfilter = pfoursplit.filter(v=>v!='')
+purplefive = '<%= @purplefive %>'
+purpleleftfive = purplefive.replace('[', '')
+purplerightfive = purpleleftfive.replace(']', '')
+pfivesplit = purplerightfive.split(',')
+pfivefilter = pfivesplit.filter(v=>v!='')
+
+$('#purpleteam200').html('')
+$("#purpleteam200").append("<center>Purple Team</center>")
+$("#purplesum").append("<p id='spacing'><b>" + purpsplit[0].replace('[', '') + "</b></p><p>Win rate: " + pwrsplit[0].replace('[', '') * 10 + "%</p><p><img height='120' width='120' src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/" + ppicsplit[0].replace('[', '') + ".png'></p>");
+for (i = 1; i < purpsplit.length-1; i++) {
+  $("#purplesum").append("<p id='spacing'><b>" + purpsplit[i] + "</b></p><p>Win rate: " + pwrsplit[i] * 10 + "%</p><p><img height='120' width='120' src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/" + ppicsplit[i] + ".png'></p>");
+}
+$("#purplesum").append("<p id='spacing'><b>" + purpsplit[purpsplit.length-1].replace(']', '') + "</b></p><p>Win rate: " + pwrsplit[pwrsplit.length-1].replace(']', '') * 10 + "%</p><p><img height='120' width='120' src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/" + ppicsplit[ppicsplit.length-1].replace(']', '') + ".png'></p>");
+
+$("#purplechamp").append("<p id='spacing'><b>" + pnamesplit[0].replace('[', '') + "</b>, " + ptitlesplit[0].replace('[', '') + "</p>Counters: " + ponefilter.length * 20 + "%<p><img src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + pkeysplit[0].replace('[', '') + ".png'></p>");
+for (i = 1; i < pnamesplit.length-1; i++) {
+  $("#purplechamp").append("<p id='spacing'><b>" + pnamesplit[i] + "</b>, " + ptitlesplit[i] + "</p><p id='purplecount" + i + "'></p><p><img src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + pkeysplit[i] + ".png'></p>");
+}
+$("#purplechamp").append("<p id='spacing'><b>" + pnamesplit[pnamesplit.length-1].replace(']', '') + "</b>, " + ptitlesplit[ptitlesplit.length-1].replace(']', '') + "</p>Counters: " + pfivefilter.length * 20 + "%<p><img src='http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + pkeysplit[pkeysplit.length-1].replace(']', '') + ".png'></p>");
+$('#purplecount1').append("Counters: " + ptwofilter.length * 20 + "%");
+$('#purplecount2').append("Counters: " + pthreefilter.length * 20 + "%");
+$('#purplecount3').append("Counters: " + pfourfilter.length * 20 + "%");
+
+psumone = pwrsplit[0].replace('[', '') * 10
+pchampone = ponefilter.length * 20
+psumarray = []
+for (i = 1; i < purpsplit.length-1; i++) {
+	psum = pwrsplit[i] * 10
+	psumarray.push(psum)
+}
+psumtwo = psumarray[0]
+pchamptwo = ptwofilter.length * 20
+psumthree = psumarray[1]
+pchampthree = pthreefilter.length * 20
+psumfour = psumarray[2]
+pchampfour = pfourfilter.length * 20
+psumfive = pwrsplit[pwrsplit.length-1].replace(']', '') * 10
+pchampfive = pfivefilter.length * 20
+
+pone = (psumone + pchampone) / 2
+ptwo = (psumtwo + pchamptwo) / 2
+pthree = (psumthree + pchampthree) / 2
+pfour = (psumfour + pchampfour) / 2
+pfive = (psumfive + pchampfive) / 2
+
+purpleavg = (pone + ptwo + pthree + pfour + pfive) / 5
+
+}
+
+total = blueavg + purpleavg
+bluepredict = (blueavg / total) * 100
+purplepredict = (purpleavg / total) * 100
+
+$('#blueresults').append("<h3 id='blueteam100'><center>Blue Team</center></h3><p><b>" + Math.ceil(bluepredict) + "% chance of winning.</b></p>")
+$('#purpleresults').append("<h3 id='purpleteam200'><center>Purple Team</center></h3><p><b>" + Math.ceil(purplepredict) + "% chance of winning.</b></p>")
+
+console.log('<%= @bluechamp %>')
+console.log('<%= @purplechamp %>')
+console.log('<%= @blueone %>')
+console.log('<%= @bluetwo %>')
+console.log('<%= @bluethree %>')
+console.log('<%= @bluefour %>')
+console.log('<%= @bluefive %>')
+console.log('<%= @purpleone %>')
+console.log('<%= @purpletwo %>')
+console.log('<%= @purplethree %>')
+console.log('<%= @purplefour %>')
+console.log('<%= @purplefive %>')
+bluerescount = []
+bluerescount.push(parseInt('<%= @bsone %>'))
+bluerescount.push(parseInt('<%= @bstwo %>'))
+bluerescount.push(parseInt('<%= @bsthree %>'))
+bluerescount.push(parseInt('<%= @bsfour %>'))
+bluerescount.push(parseInt('<%= @bsfive %>'))
+
+purplerescount = []
+purplerescount.push(parseInt('<%= @psone %>'))
+purplerescount.push(parseInt('<%= @pstwo %>'))
+purplerescount.push(parseInt('<%= @psthree %>'))
+purplerescount.push(parseInt('<%= @psfour %>'))
+purplerescount.push(parseInt('<%= @psfive %>'))
+
+pbigone = []
+psmallone = []
+if (ponefilter.length > 0) {	
+for (i = 0; i < ponefilter.length-1; i++) {
+	psmallone.push(parseInt(ponefilter[i]))
+}
+pbigone.push(psmallone)
+}
+psmalltwo = []
+if (ptwofilter.length > 0) {	
+for (i = 0; i < ptwofilter.length-1; i++) {
+	psmalltwo.push(parseInt(ptwofilter[i]))
+}
+pbigone.push(psmalltwo)
+}
+psmallthree = []
+if (pthreefilter.length > 0) {	
+for (i = 0; i < pthreefilter.length-1; i++) {
+	psmallthree.push(parseInt(pthreefilter[i]))
+}
+pbigone.push(psmallthree)
+}
+psmallfour = []
+if (pfourfilter.length > 0) {	
+for (i = 0; i < pfourfilter.length-1; i++) {
+	psmallfour.push(parseInt(pfourfilter[i]))
+}
+pbigone.push(psmallfour)
+}
+psmallfive = []
+if (pfivefilter.length > 0) {	
+for (i = 0; i < pfivefilter.length-1; i++) {
+	psmallfive.push(parseInt(pfivefilter[i]))
+}
+pbigone.push(psmallfive)
+}
+
+console.log(bluepredict)
+console.log(purplepredict)
+console.log(bluerescount)
+console.log(purplerescount)
+console.log(pbigone)

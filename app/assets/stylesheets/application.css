@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: black;
+	font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+
+#blue {
+	width: 24%;
+	float: left;
+	border-bottom-right-radius: 10px; 
+	background:rgba(255,255,255, 0.3);
+}
+
+#blueteam100 {
+	background-color: blue;
+}
+
+#purpleteam200 {
+	background-color: purple;
+}
+
+#purple {
+	width: 24%;
+	float: right;
+	border-bottom-left-radius: 10px; 
+	background:rgba(255,255,255, 0.3);
+}
+
+#bluesum {
+	float: left;
+	width: 40%;
+}
+
+#bluechamp {
+	float: left;
+	width: 60%;
+}
+
+#purplesum {
+	float: right;
+	width: 40%;
+	text-align: right;
+}
+
+#purplechamp {
+	float: left;
+	width: 60%;
+	text-align: right;
+}
+
+#right {
+	text-align: right;
+}
+
+#spacing {
+	height: 25px;
+}
+
+#main {
+	position: fixed;
+	display: inline-block;
+	width: 50%;
+	height: 600px;
+	margin-top: 4%; 
+	margin-left: 1%;
+	border-radius: 10px;
+	background:rgba(255,255,255, 0.3);
+}
+
+#blueresults {
+	width: 50%;
+	float: left;
+}
+
+#purpleresults {
+	width: 50%;
+	float: left;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}

@@ -1,0 +1,31 @@
+<div id="lop">
+	<div id="blue">
+		<h3 id="blueteam100"></h3>
+		<h3 id="bluewr"></h3>
+	<div id="bluesum"></div>
+	<div id="bluechamp"></div>
+	</div>
+	<div id="main">
+	<center>
+			<h1 id="welcome">Welcome, whose fate do you wish to see?</h1>
+			<h1 id="results"></h1>
+			<p id="summary"></p>
+			<img id="profileicon"/><br>
+			<div id="blueresults"></div>
+			<div id="purpleresults"></div>
+			<p id="again"></p>
+			<%= form_tag(currentgame_users_path, remote: true) do %>
+			  <%= text_field_tag :name %>
+			  <%= submit_tag "Find" %>
+			<% end %>
+		</center>
+	</div>
+	<div id="purple">
+	<div id="right">
+		<h3 id="purpleteam200"></h3>
+		<h3 id="purplewr"></h3>
+	</div>
+	<div id="purplechamp"></div>
+	<div id="purplesum"></div>
+	</div>
+</div>
