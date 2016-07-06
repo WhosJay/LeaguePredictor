@@ -1,8 +1,10 @@
+// center div information
 $("#welcome").html("")
 $("#results").html("You have named " + "<%= @sumname %>")
 $("#again").html("<i>Who shall we seek next?</i>")
 $("#profileicon").attr("src", '<%= @square %>')
 
+// blue team populating
 blue = "<%= @blue.to_json %>"
 if (blue != null) {
 $('#bluesum').html('')
@@ -97,6 +99,7 @@ blueavg = (bone + btwo + bthree + bfour + bfive) / 5
 
 }
 
+// purple team info
 purple = "<%= @purple.to_json %>"
 if (purple != null) {
 $('#purplesum').html('')
@@ -191,31 +194,58 @@ purpleavg = (pone + ptwo + pthree + pfour + pfive) / 5
 
 }
 
+// total average
 total = blueavg + purpleavg
 bluepredict = (blueavg / total) * 100
 purplepredict = (purpleavg / total) * 100
 
-$('#blueresults').append("<h3 id='blueteam100'><center>Blue Team</center></h3><p><b>" + Math.ceil(bluepredict) + "% chance of winning.</b></p>")
-$('#purpleresults').append("<h3 id='purpleteam200'><center>Purple Team</center></h3><p><b>" + Math.ceil(purplepredict) + "% chance of winning.</b></p>")
+$('#blueresults').append("<h3 id='blueteam100'><center>Blue Team</center></h3><p><h1>" + Math.ceil(bluepredict) + "% chance of winning.</h1></p>")
+$('#purpleresults').append("<h3 id='purpleteam200'><center>Purple Team</center></h3><p><h1>" + Math.ceil(purplepredict) + "% chance of winning.</h1></p>")
 
-console.log('<%= @bluechamp %>')
-console.log('<%= @purplechamp %>')
-console.log('<%= @blueone %>')
-console.log('<%= @bluetwo %>')
-console.log('<%= @bluethree %>')
-console.log('<%= @bluefour %>')
-console.log('<%= @bluefive %>')
-console.log('<%= @purpleone %>')
-console.log('<%= @purpletwo %>')
-console.log('<%= @purplethree %>')
-console.log('<%= @purplefour %>')
-console.log('<%= @purplefive %>')
+
 bluerescount = []
 bluerescount.push(parseInt('<%= @bsone %>'))
 bluerescount.push(parseInt('<%= @bstwo %>'))
 bluerescount.push(parseInt('<%= @bsthree %>'))
 bluerescount.push(parseInt('<%= @bsfour %>'))
 bluerescount.push(parseInt('<%= @bsfive %>'))
+
+bbigone = []
+bsmallone = []
+if (bonefilter.length > 0) {	
+for (i = 0; i < bonefilter.length; i++) {
+	bsmallone.push(parseInt(bonefilter[i]))
+}
+}
+bbigone.push(bsmallone)
+bsmalltwo = []
+if (btwofilter.length > 0) {	
+for (i = 0; i < btwofilter.length; i++) {
+	bsmalltwo.push(parseInt(btwofilter[i]))
+}
+}
+bbigone.push(bsmalltwo)
+bsmallthree = []
+if (bthreefilter.length > 0) {	
+for (i = 0; i < bthreefilter.length; i++) {
+	bsmallthree.push(parseInt(bthreefilter[i]))
+}
+}
+bbigone.push(bsmallthree)
+bsmallfour = []
+if (bfourfilter.length > 0) {	
+for (i = 0; i < bfourfilter.length; i++) {
+	bsmallfour.push(parseInt(bfourfilter[i]))
+}
+}
+bbigone.push(bsmallfour)
+bsmallfive = []
+if (bfivefilter.length > 0) {	
+for (i = 0; i < bfivefilter.length; i++) {
+	bsmallfive.push(parseInt(bfivefilter[i]))
+}
+}
+bbigone.push(bsmallfive)
 
 purplerescount = []
 purplerescount.push(parseInt('<%= @psone %>'))
@@ -227,42 +257,115 @@ purplerescount.push(parseInt('<%= @psfive %>'))
 pbigone = []
 psmallone = []
 if (ponefilter.length > 0) {	
-for (i = 0; i < ponefilter.length-1; i++) {
+for (i = 0; i < ponefilter.length; i++) {
 	psmallone.push(parseInt(ponefilter[i]))
 }
-pbigone.push(psmallone)
 }
+pbigone.push(psmallone)
 psmalltwo = []
 if (ptwofilter.length > 0) {	
-for (i = 0; i < ptwofilter.length-1; i++) {
+for (i = 0; i < ptwofilter.length; i++) {
 	psmalltwo.push(parseInt(ptwofilter[i]))
 }
-pbigone.push(psmalltwo)
 }
+pbigone.push(psmalltwo)
 psmallthree = []
 if (pthreefilter.length > 0) {	
-for (i = 0; i < pthreefilter.length-1; i++) {
+for (i = 0; i < pthreefilter.length; i++) {
 	psmallthree.push(parseInt(pthreefilter[i]))
 }
-pbigone.push(psmallthree)
 }
+pbigone.push(psmallthree)
 psmallfour = []
 if (pfourfilter.length > 0) {	
-for (i = 0; i < pfourfilter.length-1; i++) {
+for (i = 0; i < pfourfilter.length; i++) {
 	psmallfour.push(parseInt(pfourfilter[i]))
 }
-pbigone.push(psmallfour)
 }
+pbigone.push(psmallfour)
 psmallfive = []
 if (pfivefilter.length > 0) {	
-for (i = 0; i < pfivefilter.length-1; i++) {
+for (i = 0; i < pfivefilter.length; i++) {
 	psmallfive.push(parseInt(pfivefilter[i]))
 }
-pbigone.push(psmallfive)
 }
+pbigone.push(psmallfive)
 
 console.log(bluepredict)
 console.log(purplepredict)
 console.log(bluerescount)
 console.log(purplerescount)
+console.log(bbigone)
 console.log(pbigone)
+console.log('<%= @blueone %>')
+console.log('<%= @bluetwo %>')
+console.log('<%= @bluethree %>')
+console.log('<%= @bluefour %>')
+console.log('<%= @bluefive %>')
+console.log('<%= @purpleone %>')
+console.log('<%= @purpletwo %>')
+console.log('<%= @purplethree %>')
+console.log('<%= @purplefour %>')
+console.log('<%= @purplefive %>')
+
+// for (i = 0; purplerescount.length; i++) {
+// 	if (pbigone[i].length > 0) {
+// 		$.ajax({
+// 		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[i],
+// 		  method: "GET",
+// 		  data:{
+// 		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+// 		  },
+// 		  success: function(response) {
+// 		   	var results = response.key
+// 		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+// 		  	$('#purpleresults').append("<img src=" + square + ">")
+// 		  }
+// 		});
+// 		pbigone[i].forEach(function(entry){
+// 			$.ajax({
+// 			  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+// 			  method: "GET",
+// 			  data:{
+// 			  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+// 			  },
+// 			  success: function(response) {
+// 			   	var results = response.key
+// 			   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+// 			  	$('#purpleresults').append("<img src=" + square + ">")
+// 			  }
+// 			});
+// 		});
+// 	}
+// }
+
+// for (i = 0; bluerescount.length; i++) {
+// 	if (bbigone[i].length > 0) {
+// 		$.ajax({
+// 		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[i],
+// 		  method: "GET",
+// 		  data:{
+// 		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+// 		  },
+// 		  success: function(response) {
+// 		   	var results = response.key
+// 		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+// 		  	$('#blueresults').append("<img src=" + square + ">")
+// 		  }
+// 		});
+// 		bbigone[i].forEach(function(entry){
+// 			$.ajax({
+// 			  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+// 			  method: "GET",
+// 			  data:{
+// 			  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+// 			  },
+// 			  success: function(response) {
+// 			   	var results = response.key
+// 			   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+// 			  	$('#blueresults').append("<img src=" + square + ">")
+// 			  }
+// 			});
+// 		});
+// 	}
+// }

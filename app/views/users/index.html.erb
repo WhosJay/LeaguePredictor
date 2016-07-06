@@ -14,10 +14,12 @@
 			<div id="blueresults"></div>
 			<div id="purpleresults"></div>
 			<p id="again"></p>
-			<%= form_tag(currentgame_users_path, remote: true) do %>
-			  <%= text_field_tag :name %>
-			  <%= submit_tag "Find" %>
-			<% end %>
+			<div id="form">
+				<%= form_tag(currentgame_users_path, remote: true) do %>
+				  <%= text_field_tag :name %>
+				  <%= submit_tag "Find" %>
+				<% end %>
+			</div>
 		</center>
 	</div>
 	<div id="purple">
