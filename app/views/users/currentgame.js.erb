@@ -4,7 +4,7 @@ $("#results").html("You have named " + "<%= @sumname %>")
 $("#again").html("<i>Who shall we seek next?</i>")
 $("#profileicon").attr("src", '<%= @square %>')
 
-// blue team populating
+// blue team information
 blue = "<%= @blue.to_json %>"
 if (blue != null) {
 $('#bluesum').html('')
@@ -99,7 +99,7 @@ blueavg = (bone + btwo + bthree + bfour + bfive) / 5
 
 }
 
-// purple team info
+// purple team information
 purple = "<%= @purple.to_json %>"
 if (purple != null) {
 $('#purplesum').html('')
@@ -199,10 +199,10 @@ total = blueavg + purpleavg
 bluepredict = (blueavg / total) * 100
 purplepredict = (purpleavg / total) * 100
 
-$('#blueresults').append("<h3 id='blueteam100'><center>Blue Team</center></h3><p><h1>" + Math.ceil(bluepredict) + "% chance of winning.</h1></p>")
-$('#purpleresults').append("<h3 id='purpleteam200'><center>Purple Team</center></h3><p><h1>" + Math.ceil(purplepredict) + "% chance of winning.</h1></p>")
+$('#blueresults').append("<h3 id='blueteam100'><center>Blue Team</center></h3><p><h1><center>" + Math.round(bluepredict) + "% chance of winning.</center></h1></p>")
+$('#purpleresults').append("<h3 id='purpleteam200'><center>Purple Team</center></h3><p><h1><center>" + Math.round(purplepredict) + "% chance of winning.</center></h1></p>")
 
-
+// which champion counters which
 bluerescount = []
 bluerescount.push(parseInt('<%= @bsone %>'))
 bluerescount.push(parseInt('<%= @bstwo %>'))
@@ -291,6 +291,308 @@ for (i = 0; i < pfivefilter.length; i++) {
 }
 pbigone.push(psmallfive)
 
+// blue team counters
+if (bbigone[0].length > 0) {
+	$("#blueresults").append("<div id='bluereschamp0'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[0],
+	  method: "GET",
+	  data:{
+	  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var bluesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#bluereschamp0").append("<img id='left' src=" + bluesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	bbigone[0].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#bluereschamp0").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (bbigone[1].length > 0) {
+	$("#blueresults").append("<div id='bluereschamp1'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[1],
+	  method: "GET",
+	  data:{
+	  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var bluesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#bluereschamp1").append("<img id='left' src=" + bluesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	bbigone[1].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#bluereschamp1").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (bbigone[2].length > 0) {
+	$("#blueresults").append("<div id='bluereschamp2'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[2],
+	  method: "GET",
+	  data:{
+	  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var bluesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#bluereschamp2").append("<img id='left' src=" + bluesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	bbigone[2].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#bluereschamp2").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (bbigone[3].length > 0) {
+	$("#blueresults").append("<div id='bluereschamp3'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[3],
+	  method: "GET",
+	  data:{
+	  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var bluesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#bluereschamp3").append("<img id='left' src=" + bluesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	bbigone[3].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#bluereschamp3").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (bbigone[4].length > 0) {
+	$("#blueresults").append("<div id='bluereschamp4'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[4],
+	  method: "GET",
+	  data:{
+	  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var bluesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#bluereschamp4").append("<img id='left' src=" + bluesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	bbigone[4].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#bluereschamp4").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+// purple team counters
+if (pbigone[0].length > 0) {
+	$("#purpleresults").append("<div id='purplereschamp0'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[0],
+	  method: "GET",
+	  data:{
+	  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var purplesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#purplereschamp0").append("<img id='left' src=" + purplesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	pbigone[0].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#purplereschamp0").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (pbigone[1].length > 0) {
+	$("#purpleresults").append("<div id='purplereschamp1'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[1],
+	  method: "GET",
+	  data:{
+	  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var purplesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#purplereschamp1").append("<img id='left' src=" + purplesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	pbigone[1].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#purplereschamp1").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (pbigone[2].length > 0) {
+	$("#purpleresults").append("<div id='purplereschamp2'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[2],
+	  method: "GET",
+	  data:{
+	  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var purplesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#purplereschamp2").append("<img id='left' src=" + purplesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	pbigone[2].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#purplereschamp2").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (pbigone[3].length > 0) {
+	$("#purpleresults").append("<div id='purplereschamp3'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[3],
+	  method: "GET",
+	  data:{
+	  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var purplesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#purplereschamp3").append("<img id='left' src=" + purplesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	pbigone[3].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#purplereschamp3").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
+if (pbigone[4].length > 0) {
+	$("#purpleresults").append("<div id='purplereschamp4'></div>")
+	$.ajax({
+	  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[4],
+	  method: "GET",
+	  data:{
+	  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+	  },
+	  success: function(response) {
+	   	var results = response.key
+	   	var purplesquare = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+	  	$("#purplereschamp4").append("<img id='left' src=" + purplesquare + "><b id='leftword'>COUNTERS</b>")
+	  }
+	});
+	pbigone[4].forEach(function(entry){
+		$.ajax({
+		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
+		  method: "GET",
+		  data:{
+		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
+		  },
+		  success: function(response) {
+		   	var results = response.key
+		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
+		  	$("#purplereschamp4").append("<img id='counterpics' src=" + square + ">")
+		  }
+		});
+	});
+}
+
 console.log(bluepredict)
 console.log(purplepredict)
 console.log(bluerescount)
@@ -307,65 +609,3 @@ console.log('<%= @purpletwo %>')
 console.log('<%= @purplethree %>')
 console.log('<%= @purplefour %>')
 console.log('<%= @purplefive %>')
-
-// for (i = 0; purplerescount.length; i++) {
-// 	if (pbigone[i].length > 0) {
-// 		$.ajax({
-// 		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + purplerescount[i],
-// 		  method: "GET",
-// 		  data:{
-// 		  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
-// 		  },
-// 		  success: function(response) {
-// 		   	var results = response.key
-// 		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
-// 		  	$('#purpleresults').append("<img src=" + square + ">")
-// 		  }
-// 		});
-// 		pbigone[i].forEach(function(entry){
-// 			$.ajax({
-// 			  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
-// 			  method: "GET",
-// 			  data:{
-// 			  api_key: "60304d9a-bf05-49ce-bd2a-30e6cc3f3863"
-// 			  },
-// 			  success: function(response) {
-// 			   	var results = response.key
-// 			   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
-// 			  	$('#purpleresults').append("<img src=" + square + ">")
-// 			  }
-// 			});
-// 		});
-// 	}
-// }
-
-// for (i = 0; bluerescount.length; i++) {
-// 	if (bbigone[i].length > 0) {
-// 		$.ajax({
-// 		  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + bluerescount[i],
-// 		  method: "GET",
-// 		  data:{
-// 		  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
-// 		  },
-// 		  success: function(response) {
-// 		   	var results = response.key
-// 		   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
-// 		  	$('#blueresults').append("<img src=" + square + ">")
-// 		  }
-// 		});
-// 		bbigone[i].forEach(function(entry){
-// 			$.ajax({
-// 			  url: "https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/" + entry,
-// 			  method: "GET",
-// 			  data:{
-// 			  api_key: "5a3cb583-47f0-4344-89ab-6c52b15f4082"
-// 			  },
-// 			  success: function(response) {
-// 			   	var results = response.key
-// 			   	var square = "http://ddragon.leagueoflegends.com/cdn/6.12.1/img/champion/" + results + ".png"
-// 			  	$('#blueresults').append("<img src=" + square + ">")
-// 			  }
-// 			});
-// 		});
-// 	}
-// }

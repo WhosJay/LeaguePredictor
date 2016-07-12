@@ -74,10 +74,10 @@ body {
 }
 
 #main {
-	position: fixed;
 	display: inline-block;
 	width: 50%;
-	height: 600px;
+	height: auto;
+	padding-bottom: 25px;
 	margin-top: 4%; 
 	margin-left: 1%;
 	border-radius: 10px;
@@ -87,6 +87,7 @@ body {
 #blueresults {
 	width: 50%;
 	float: left;
+	clear: left;
 }
 
 #purpleresults {
@@ -116,4 +117,76 @@ body {
     left: 0;
     overflow: hidden;
     z-index: -100;
+}
+
+#counterpics {
+	width: 50px;
+	height: auto;
+}
+
+#left {
+	float: left;
+	width: 50px;
+	height: auto;
+}
+
+#leftword {
+	float: left;
+	padding-top: 15px;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+#counterresults {
+	overflow: auto;
+}
+
+#bluereschamp0 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#bluereschamp1 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#bluereschamp2 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#bluereschamp3 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#bluereschamp4 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#purplereschamp0 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#purplereschamp1 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#purplereschamp2 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#purplereschamp3 {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+#purplereschamp4 {
+	padding-left: 5%;
+	padding-right: 5%;
 }
